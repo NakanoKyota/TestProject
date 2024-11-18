@@ -1,11 +1,8 @@
 name: Auto Approve Owners Pull Request
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - ready_for_review
+    branches: 
+      - main
 jobs:
   approve:
     if: |
@@ -15,5 +12,22 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
-      - run: gh pr review ${{ github.event.number }} --approve
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x' 
+
+      - name: Build
+        run: dotnet build NADMServerSettingForm.csproj --configuration Release
+
+      - name: Publish
+        run: dotnet publish NADMServerSettingForm.csproj --configuration Release --output ./output
+
+      - name: Upload Executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: HelloWorldExe
+          path: ./output
