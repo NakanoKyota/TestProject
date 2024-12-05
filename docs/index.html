@@ -38,7 +38,10 @@
     <script>
         function showIframe() {
             const iframe = document.getElementById('myIframe');
-            const message = 'Hello from the parent window!';
+            const message = {
+                type: "click",
+                data: "あいうえおんがく",
+            }
             iframe.contentWindow.postMessage(message, "https://nakanokyota.github.io/TestProject/index2.html");
             iframe.src = iframe.src;
             document.getElementById('overlay').style.display = 'block'; // オーバーレイを表示
