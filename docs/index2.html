@@ -47,7 +47,7 @@
                 console.log("aaaaaaaaaaaa");
                 // メッセージを受信する
                 window.addEventListener('message', (event) => {
-                    document.getElementById('message').textContent = 'Received message: ' + event.data;
+                    document.getElementById('message').textContent = event.data;
                     console.log(event.data);
                 });
             </script>
