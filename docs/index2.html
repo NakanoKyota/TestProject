@@ -42,15 +42,15 @@
                 <p class="text"><span class="text_bold">コメント</span></p>
                 <p class="text">休暇コメントがここに</p>
             </div>
-            <p id="message">ここにメッセージが表示されます。</p>
+            <a id="message">ここにメッセージが表示されます。</a>
             <script>
                 console.log("aaaaaaaaaaaa");
                 // メッセージを受信する
                 window.addEventListener('message', (event) => {
                     if (event.origin === "https://nakanokyota.github.io") { // child.htmlを置いた場所のオリジンを設定
                         document.getElementById('message').innerText = 'こんにちは！世界' + event.data;
+                        console.log(event.origin);
                     }
-                    console.log(event.origin);
                     console.log(event.data);
                 });
             </script>
