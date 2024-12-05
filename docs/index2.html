@@ -44,6 +44,7 @@
             </div>
             <p id="message">ここにメッセージが表示されます。</p>
             <script>
+                console.log("aaaaaaaaaaaa")
                 // メッセージを受信する
                 window.addEventListener('message', (event) => {
                     document.getElementById('message').innerText = 'Received message: ' + event.data;
