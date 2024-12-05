@@ -50,7 +50,8 @@
                     if (event.origin === "https://nakanokyota.github.io") { // child.htmlを置いた場所のオリジンを設定
                         document.getElementById('message').innerText = 'こんにちは！世界' + event.data;
                         var elem = document.getElementById("message");
-                        elem.textContent = "ちくわさん：" + event.data;
+                        elem.innerHTML = "<span style='color: red;'>span要素に変更したよ！</span>";
+                        console.log(elem);
                         console.log(event.origin);
                     }
                     console.log(event.data);
