@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BIP | 配車計画</title>
+    <link rel="stylesheet" href="./css/all.css?240603">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- フォント↓ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header_top bg-blue">
+            <div class="logo"><h1 class="head_title">BIP</h1></div>
+        </div>
+    </header>
+    <main>
+        <section class="main">
+            <div class="title gradation">
+                <h2 class="text_secondary">2024年10月28日</h2>
+            </div>
+            <div class="title bg-secondary mb15">
+                <h3 class="text_secondary subtitle">車両点検</h3>
+            </div>
+            <div class="section_box mb15">
+                <p class="text"><span class="text_bold text_red">357</span> 20tトレーラー（箱）</p>
+                <p class="text"><span class="text_bold">コメント</span></p>
+                <p class="text">車両点検コメントがここにあああああああああああああ</p>
+            </div>
+            <div class="title bg-secondary mb15">
+                <h3 class="text_secondary subtitle">休暇</h3>
+            </div>
+            <div class="section_box mb28">
+                <p class="text"><span class="text_bold text_red">9999</span> 中野</p>
+                <p class="text"><span class="text_bold">コメント</span></p>
+                <p class="text">休暇コメントがここに</p>
+            </div>
+            <p id="message">ここにメッセージが表示されます。</p>
+            <script>
+                // メッセージを受信する
+                window.addEventListener('message', (event) => {
+                    document.getElementById('message').innerText = 'Received message: ' + event.data;
+                });
+            </script>
+        </section>
+    </main>
+    <script src="./js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+    <script src="./js/datepicker.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BIP | 配車計画</title>
+    <link rel="stylesheet" href="./css/all.css?240603">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- フォント↓ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #myIframe {
+            display: none; /* 初期状態は非表示 */
+            width: 100%;
+            height: 70%;
+            border: none;
+            position: relative;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="myIframe" src="./plan_edit_holiday.html" style="display:none;" width="100%" height="500"></iframe>
+    <button onclick="showIframe()">詳細を表示</button>
+    <li><a href="./plan.html" class="menu_item active"><span class="menu_title">戻る</span></a></li>
+    <div id="overlay"></div>
+
+    <script>
+        function showIframe() {
+            const iframe = document.getElementById('myIframe');
+            const message = 'Hello from the parent window!';
+            iframe.contentWindow.postMessage(message, "*");
+            iframe.src = iframe.src;
+            document.getElementById('overlay').style.display = 'block'; // オーバーレイを表示
+            iframe.style.display = 'block'; // Iフレームを表示
+            document.getElementById('test').style.display = 'none';
+        }
+
+        function hideIframe() {
+            // document.getElementById('overlay').style.display = 'none'; // オーバーレイを隠す
+            // document.getElementById('myIframe').style.display = 'none'; // Iフレームを隠す
+            // document.getElementById('test').style.display = 'block';
+        }
+    </script>
+    <header class="header">
+        <div class="header_top bg-blue">
+            <div class="logo"><h1 class="head_title">BIP</h1></div>
+            <div class="right_box">
+                <a href="./mypage.html" class="icon_img text_white">
+                    <i class="bi bi-person-gear"></i>
+                    <span class="menu_title">マイページ</span>
+                </a>
+                <a href="./login.html" class="icon_img text_white">
+                    <i class="bi bi-door-open-fill"></i>
+                    <span class="menu_title">ログアウト</span>
+                </a>
+            </div>
+        </div>
+        <div class="header_bottom">
+            <ul class="header_menu" id="header_menu">
+                <li><a href="./registation.html" class="menu_item "><i class="bi bi-pen-fill icon_img header_menu_title"></i><span class="menu_title">案件登録</span></a></li>
+                <li><a href="./plan.html" class="menu_item active"><i class="bi bi-calendar3 icon_img header_menu_title"></i><span class="menu_title">配車計画</span></a></li>
+                <li><a href="./achievements.html" class="menu_item"><i class="bi bi-card-checklist icon_img header_menu_title"></i><span class="menu_title">実績入力</span></a></li>
+                <li><a href="./management.html" class="menu_item"><i class="bi bi-folder-fill icon_img header_menu_title"></i><span class="menu_title">販売管理</span></a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="main" id="test">
+            <div class="search_area">
+                <div class="form_area">
+                    <ul class="search_menu bg-secondary">
+                        <li><a href="" class="search_item"><i class="bi bi-chevron-left"></i>前10日</a></li>
+                        <li class="date_search"><span class="datepicker_icon"><input type="text" class="search_item datepicker active " value="2024年10月28日"></span></li>
+                        <li><a href="" class="search_item">翌10日<i class="bi bi-chevron-right"></i></a></li>
+                    </ul>
+                    <form action="">
+                        <div class="form bet_ween collapse" id="collapseSeach">
+                            <div class="form_cell w_80">
+                                <label class="form_label ">車両</label>
+                                <select class="form_control w_100">
+                                    <option hidden></option>
+                                    <option>車両１</option>
+                                    <option>車両２</option>
+                                    <option>車両３</option>
+                                    <option>車両４</option>
+                                    <option>車両５</option>
+                                </select>
+                            </div>
+                            <div class="form_cell w_80">
+                                <label class="form_label ">グループ</label>
+                                <select class="form_control w_100">
+                                    <option hidden></option>
+                                    <option>つかみ</option>
+                                    <option>クレーン</option>
+                                    <option>車両３</option>
+                                    <option>車両４</option>
+                                    <option>車両５</option>
+                                </select>
+                            </div>
+                            <div class="form_cell w_15">
+                                <button type="submit" class="btn blue search_btn">検索</button>
+                            </div>
+                        </div>
+                        <div class="search_collapse">
+                            <div class="hidden_seach active">
+                                <p class="text text_limit_1">
+                                    <span class="text_bold">車両：</span>357 20tトレーラー（箱） <span class="text_bold ms5">グループ：</span>つかみ
+                                </p>
+                            </div>
+                            <button type="button" class="collapse_btn" data-bs-toggle="collapse" data-bs-target="#collapseSeach" aria-expanded="false" aria-controls="collapseSeach">
+                                <i class="bi bi-chevron-double-down"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="date_switching">
+                        <div class="switching_area">
+                            <input type="checkbox" class="swithing_input" id="formSwitchCheckDefault" role="switch">
+                            <label for="formSwitchCheckDefault" class="form_label">日次に切り替え</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./js/all.js"></script>
+    <script src="./js/collapse.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+    <script src="./js/datepicker.js"></script>
+</body>
+</html>
