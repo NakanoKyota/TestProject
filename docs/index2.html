@@ -57,6 +57,7 @@
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(event.data)  // データをJSONとして送信
+                        mode: 'cors'
                     })
                     .then(response => {
                         // レスポンスが正常か確認
