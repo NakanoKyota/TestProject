@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <iframe id="myIframe" src="https://httpbin.org/post" style="display:none;" width="100%" height="500"></iframe>
+    <iframe id="myIframe" src="https://httpbin.org/get" style="display:none;" width="100%" height="500"></iframe>
     <button onclick="showIframe()">詳細を表示</button>
     <li><a href="https://nakanokyota.github.io/TestProject/index.html" class="menu_item active"><span class="menu_title">戻る</span></a></li>
     <div id="overlay"></div>
@@ -38,7 +38,7 @@
             const iframe = document.getElementById('myIframe');
             const message = 'Hello from the parent window!';
             iframe.src = iframe.src;
-            iframe.contentWindow.postMessage(message, "https://httpbin.org/post");
+            iframe.contentWindow.postMessage(message, "https://httpbin.org/get");
             document.getElementById('overlay').style.display = 'block'; // オーバーレイを表示
             iframe.style.display = 'block'; // Iフレームを表示
             document.getElementById('test').style.display = 'none';
