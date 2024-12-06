@@ -56,14 +56,14 @@
                         },
                         body: JSON.stringify(event.data)  // 受け取ったデータをJSONとして送信
                     })
-                        .then(response => response.json())
-                        .then(jsonResponse => {
-                            // httpbin.orgからのレスポンスをコンソールに表示
-                            console.log('Response from httpbin:', jsonResponse);
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                    .then(response => response.json())
+                    .then(jsonResponse => {
+                        // httpbin.orgからのレスポンスをコンソールに表示
+                        console.log('Response from httpbin:', jsonResponse);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
                 });
             </script>
             <!--<script>
