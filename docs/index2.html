@@ -47,6 +47,8 @@
                 window.addEventListener('message', function (event) {
                     // 受け取ったメッセージを確認
                     console.log('Message received from parent:', event.data);
+                    var elem = document.getElementById("message");
+                    elem.innerText = "こんにちは";
 
                     // httpbin.org に POST リクエストを送信
                     fetch('https://httpbin.org/post', {
