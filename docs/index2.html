@@ -50,13 +50,17 @@
                     var elem = document.getElementById("message");
                     elem.innerText = "こんにちは";
 
+                    const data = {
+                        message: '?' + event.data
+                    };
+
                     // httpbin.org に POST リクエストを送信
                     fetch('https://httpbin.org/post', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(event)
+                        body: JSON.stringify(data)
                     })
                     .then(response => {
                         if (!response.ok) {
