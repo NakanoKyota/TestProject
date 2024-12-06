@@ -53,11 +53,11 @@
                     // httpbin.org に POST リクエストを送信
                     fetch('https://httpbin.org/post', {
                         method: 'POST',
+                        mode: 'cors',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(event.data)  // データをJSONとして送信
-                        mode: 'cors'
                     })
                     .then(response => {
                         // レスポンスが正常か確認
