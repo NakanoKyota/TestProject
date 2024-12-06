@@ -51,28 +51,15 @@
                     elem.innerText = "こんにちは";
 
                     // httpbin.org に POST リクエストを送信
-                    fetch('https://httpbin.org/post', {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(event.data)  // データをJSONとして送信
-                    })
-                    .then(response => {
-                        // レスポンスが正常か確認
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok: ' + response.statusText);
-                        }
-                        return response.json();
-                    })
-                    .then(jsonResponse => {
-                        // レスポンスをコンソールに表示
-                        console.log('Response from httpbin:', jsonResponse);
-                    })
-                    .catch(error => {
-                        console.error('Fetch error:', error); // エラーハンドリング
-                    });
+                    fetch('https://httpbin.org/post')
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Database data:', data);
+                            // ここでデータを処理
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
 
                     // 受け取ったメッセージを親ページに戻す
                     window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
