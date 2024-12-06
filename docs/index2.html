@@ -46,7 +46,7 @@
             <script>
                 window.addEventListener('message', function (event) {
                     // 受け取ったメッセージを確認
-                    console.log('Message received from parent:', event.data);
+                    console.log('Message received from parent:', event);
                     var elem = document.getElementById("message");
                     elem.innerText = "こんにちは";
 
@@ -56,15 +56,21 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(event.data)  // データをJSONとして送信
+                        body: JSON.stringify(event.message)
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Database data:', data);
-                        // ここでデータを処理
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(jsonResponse => {
+                        console.log('Response:', jsonResponse);
+                        // 受け取ったレスポンスをHTMLに表示
+                        document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
                     })
                     .catch(error => {
-                        console.error('Error fetching data:', error);
+                        console.error('Fetch error:', error);
                     });
 
                     // 受け取ったメッセージを親ページに戻す

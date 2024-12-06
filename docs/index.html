@@ -36,9 +36,11 @@
     <script>
         function showIframe() {
             const iframe = document.getElementById('myIframe');
-            const message = 'Hello from the parent window!';
+            const messages = {
+                message: 'Hello from the parent window!'
+            };
             iframe.src = iframe.src;
-            iframe.contentWindow.postMessage(message, "https://nakanokyota.github.io/TestProject/index2.html");
+            iframe.contentWindow.postMessage(messages, "https://nakanokyota.github.io/TestProject/index2.html");
             document.getElementById('overlay').style.display = 'block'; // オーバーレイを表示
             iframe.style.display = 'block'; // Iフレームを表示
             document.getElementById('test').style.display = 'none';
