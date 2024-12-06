@@ -53,6 +53,17 @@
                         elem.innerHTML = "<span style='color: red;'>span要素に変更したよ！</span>";
                         console.log(elem);
                         console.log(event.origin);
+                        // httpbin.org に POST リクエストを送信
+                        const response = await fetch('https://httpbin.org/post', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(event.data)  // 受け取ったデータをJSONとして送信
+                        });
+
+                        const jsonResponse = await response.json();
+                        console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
                     }
                     console.log(event.data);
                 });
