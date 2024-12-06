@@ -61,7 +61,10 @@
                     .then(response => response.json())
                     .then(jsonResponse => {
                         console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
-                    }
+                    })
+                    .catch (error => {
+                        console.error('Error:', error);
+                    });
 
                     const jsonResponse = await response.json();
                     console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
