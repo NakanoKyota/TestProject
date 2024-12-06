@@ -46,18 +46,22 @@
             <script>
                 console.log("aaaaaaaaaaaa");
                 // メッセージを受信する
-                window.addEventListener('message', function (event) => {
+                window.addEventListener('message', (event) => {
                     var elem = document.getElementById("message");
                     console.log(elem);
                     console.log(event.origin);
                     // httpbin.org に POST リクエストを送信
-                    const response = await fetch('https://httpbin.org/post', {
+                    fetch('https://httpbin.org/post', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(event.data)  // 受け取ったデータをJSONとして送信
-                    });
+                    })
+                    .then(response => response.json())
+                    .then(jsonResponse => {
+                        console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
+                    }
 
                     const jsonResponse = await response.json();
                     console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
