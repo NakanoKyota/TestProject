@@ -65,6 +65,40 @@
                     window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
                 });
             </script>
+            <h1>POSTリクエストの送信</h1>
+            <button id="sendPost">POST送信</button>
+            <div id="response"></div>
+
+            <script>
+                document.getElementById('sendPost').addEventListener('click', function () {
+                    // POSTするためのデータ
+                    const data = {
+                        message: 'Hello, this is a test message!'
+                    };
+
+                    fetch('https://httpbin.org/post', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(jsonResponse => {
+                        console.log('Response:', jsonResponse);
+                        // 受け取ったレスポンスをHTMLに表示
+                        document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                    });
+                });
+            </script>
             <!--<script>
         console.log("aaaaaaaaaaaa");
         // メッセージを受信する
