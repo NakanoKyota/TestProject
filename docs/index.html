@@ -66,6 +66,11 @@
             });
         }
 
+        // iframeからのメッセージを受信するイベントリスナー
+        window.addEventListener('message', function (event) {
+            console.log('Message received from iframe:', event.data);
+        });
+
         function hideIframe() {
             // document.getElementById('overlay').style.display = 'none'; // オーバーレイを隠す
             // document.getElementById('myIframe').style.display = 'none'; // Iフレームを隠す

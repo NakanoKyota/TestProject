@@ -70,6 +70,9 @@
                     .catch(error => {
                         console.error('Fetch error:', error); // エラーハンドリング
                     });
+
+                    // 受け取ったメッセージを親ページに戻す
+                    window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
                 });
             </script>
             <!--<script>
