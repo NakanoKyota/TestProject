@@ -47,7 +47,7 @@
                 console.log("aaaaaaaaaaaa");
                 // メッセージを受信する
                 window.addEventListener('message', (event) => {
-                    if (event.origin === "https://nakanokyota.github.io") { // child.htmlを置いた場所のオリジンを設定
+                    if (event.origin === "https://nakanokyota.github.io") {
                         document.getElementById('message').innerText = 'こんにちは！世界' + event.data;
                         var elem = document.getElementById("message");
                         elem.innerHTML = "<span style='color: red;'>span要素に変更したよ！</span>";
