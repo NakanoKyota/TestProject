@@ -46,7 +46,7 @@
             <script>
                 console.log("aaaaaaaaaaaa");
                 // メッセージを受信する
-                window.addEventListener('message', async function (event) => {
+                window.addEventListener('message', function (event) => {
                     var elem = document.getElementById("message");
                     console.log(elem);
                     console.log(event.origin);
