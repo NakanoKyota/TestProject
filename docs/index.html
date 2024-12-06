@@ -50,20 +50,20 @@
                 },
                 body: JSON.stringify(message)  // データをJSONとして送信
             })
-                .then(response => {
-                    // レスポンスが正常か確認
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(jsonResponse => {
-                    // レスポンスをコンソールに表示
-                    console.log('Response from httpbin:', jsonResponse);
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error); // エラーハンドリング
-                });
+            .then(response => {
+                // レスポンスが正常か確認
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(jsonResponse => {
+                // レスポンスをコンソールに表示
+                console.log('Response from httpbin:', jsonResponse);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error); // エラーハンドリング
+            });
         }
 
         function hideIframe() {
