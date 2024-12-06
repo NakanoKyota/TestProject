@@ -44,12 +44,10 @@
             </div>
             <a id="message">ここにメッセージが表示されます。</a>
             <script>
-                console.log("aaaaaaaaaaaa");
-                // メッセージを受信する
-                window.addEventListener('message', (event) => {
-                    var elem = document.getElementById("message");
-                    console.log(elem);
-                    console.log(event.origin);
+                window.addEventListener('message', function (event) {
+                    // 受け取ったメッセージを確認
+                    console.log('Message received from parent:', event.data);
+
                     // httpbin.org に POST リクエストを送信
                     fetch('https://httpbin.org/post', {
                         method: 'POST',
@@ -58,19 +56,44 @@
                         },
                         body: JSON.stringify(event.data)  // 受け取ったデータをJSONとして送信
                     })
-                    .then(response => response.json())
-                    .then(jsonResponse => {
-                        console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
-                    })
-                    .catch (error => {
-                        console.error('Error:', error);
-                    });
-
-                    const jsonResponse = await response.json();
-                    console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
-                    console.log(event.data);
+                        .then(response => response.json())
+                        .then(jsonResponse => {
+                            // httpbin.orgからのレスポンスをコンソールに表示
+                            console.log('Response from httpbin:', jsonResponse);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
                 });
             </script>
+            <!--<script>
+        console.log("aaaaaaaaaaaa");
+        // メッセージを受信する
+        window.addEventListener('message', (event) => {
+            var elem = document.getElementById("message");
+            console.log(elem);
+            console.log(event.origin);
+            // httpbin.org に POST リクエストを送信
+            fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(event.data)  // 受け取ったデータをJSONとして送信
+            })
+            .then(response => response.json())
+            .then(jsonResponse => {
+                console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
+            })
+            .catch (error => {
+                console.error('Error:', error);
+            });
+
+            const jsonResponse = await response.json();
+            console.log('Response from httpbin:', jsonResponse); // レスポンスを出力
+            console.log(event.data);
+        });
+    </script>-->
         </section>
     </main>
     <script src="./js/all.js"></script>
