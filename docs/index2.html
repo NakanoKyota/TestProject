@@ -42,7 +42,6 @@
                 <p class="text"><span class="text_bold">コメント</span></p>
                 <p class="text">休暇コメントがここに</p>
             </div>
-            <a id="message">ここにメッセージが表示されます。</a>
             <script>
                 window.addEventListener('message', function (event) {
                     // 受け取ったメッセージを確認
@@ -62,26 +61,29 @@
                         },
                         body: JSON.stringify(data)
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(jsonResponse => {
-                        console.log('Response:', jsonResponse);
-                        // 受け取ったレスポンスをHTMLに表示
-                        document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
-                    })
-                    .catch(error => {
-                        console.error('Fetch error:', error);
-                    });
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(jsonResponse => {
+                            console.log('Response:', jsonResponse);
+                            // 受け取ったレスポンスをHTMLに表示
+                            document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
+                        })
+                        .catch(error => {
+                            console.error('Fetch error:', error);
+                        });
 
                     // 受け取ったメッセージを親ページに戻す
                     window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
                 });
             </script>
-
+            @{
+            var result = 7;
+            }
+            <p id="message">: @result</p>
 
             <h1>POSTリクエストの送信</h1>
             <button id="sendPost">POST送信</button>
@@ -101,20 +103,20 @@
                         },
                         body: JSON.stringify(data)
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(jsonResponse => {
-                        console.log('Response:', jsonResponse);
-                        // 受け取ったレスポンスをHTMLに表示
-                        document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
-                    })
-                    .catch(error => {
-                        console.error('Fetch error:', error);
-                    });
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(jsonResponse => {
+                            console.log('Response:', jsonResponse);
+                            // 受け取ったレスポンスをHTMLに表示
+                            document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
+                        })
+                        .catch(error => {
+                            console.error('Fetch error:', error);
+                        });
                 });
             </script>
             <!--<script>
