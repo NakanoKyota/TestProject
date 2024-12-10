@@ -44,6 +44,35 @@
             </div>
             <div id="message"> Hello </div>
             <script>
+                window.addEventListener('load', () => {
+                    // POSTするデータの定義
+                    const data = {
+                        name: 'John Doe',
+                        age: 30
+                    };
+
+                    // Fetch APIを使用してPOSTリクエストを送信
+                    fetch('https://httpbin.org/post', {
+                        method: 'POST', // メソッドをPOSTに設定
+                        headers: {
+                            'Content-Type': 'application/json' // リクエストのContent-Typeを指定
+                        },
+                        body: JSON.stringify(data) // dataをJSON形式の文字列に変換
+                    })
+                        .then(response => {
+                            // レスポンスの確認
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json(); // レスポンスをJSON形式に変換
+                        })
+                        .then(jsonResponse => {
+                            console.log(jsonResponse); // 受け取ったJSONレスポンスを表示
+                        })
+                        .catch(error => {
+                            console.error('There has been a problem with your fetch operation:', error); // エラーハンドリング
+                        });
+                });
                 window.addEventListener('message', function (event) {
                     // 受け取ったメッセージを確認
                     console.log('Message received from parent:', event);
