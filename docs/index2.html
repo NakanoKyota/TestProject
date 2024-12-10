@@ -82,14 +82,15 @@
                     const data = {
                         message: 'Hello, World!'
                     };
-
-                    // httpbin.org に POST リクエストを送信
+                    // Fetch APIを実行前にログ
+                    console.log('Sending fetch request to httpbin...' + data);
+                    // Fetch APIを使用してPOSTリクエストを送信
                     fetch('https://httpbin.org/post', {
-                        method: 'POST',
+                        method: 'POST', // メソッドをPOSTに設定
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json' // リクエストのContent-Typeを指定
                         },
-                        body: JSON.stringify(data)
+                        body: JSON.stringify(data) // dataをJSON形式の文字列に変換
                     })
                         .then(response => {
                             if (!response.ok) {
