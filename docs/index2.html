@@ -64,8 +64,10 @@
                     })
                         .then(response => {
                             if (!response.ok) {
+                                console.log('だめ');
                                 throw new Error('Network response was not ok');
                             }
+                            console.log('OK！！');
                             return response.json();
                         })
                         .then(jsonResponse => {
