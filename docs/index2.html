@@ -82,13 +82,10 @@
                         // 受け取ったメッセージを親ページに戻す
                         window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
                     });
-                    var elem = document.getElementById('response');
-                    elem.textContent = "Goodbye, World!";
                 </script>
 
                 <h1>POSTリクエストの送信</h1>
                 <button id="sendPost">POST送信</button>
-                <div id="response"></div>
 
                 <script>
                     document.getElementById('sendPost').addEventListener('click', function () {
