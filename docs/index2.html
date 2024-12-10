@@ -69,7 +69,7 @@
                             return response.json();
                         })
                         .then(jsonResponse => {
-                            console.log('Response:', jsonResponse);
+                            console.log('Response from httpbin２２:', jsonResponse);
                             // 受け取ったレスポンスをHTMLに表示
                             document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
                         })
@@ -109,13 +109,15 @@
                         .then(jsonResponse => {
                             console.log('Response:', jsonResponse);
                             // 受け取ったレスポンスをHTMLに表示
-                            document.getElementById('response').innerText = JSON.stringify(jsonResponse, null, 2);
+                            document.getElementById('response3').innerText = JSON.stringify(jsonResponse, null, 2);
                         })
                         .catch(error => {
                             console.error('Fetch error:', error);
                         });
                 });
             </script>
+
+            <div id="response3"> Hello３ </div>
             <!--<script>
         console.log("aaaaaaaaaaaa");
         // メッセージを受信する
