@@ -44,6 +44,8 @@
             </div>
             <div id ="message"> Hello </div>
                 <script>
+                    var elem = document.getElementById('message');
+                    elem.textContent = "Goodbye, World!";
                     window.addEventListener('message', function (event) {
                         // 受け取ったメッセージを確認
                         console.log('Message received from parent:', event);
@@ -80,6 +82,8 @@
                         // 受け取ったメッセージを親ページに戻す
                         window.parent.postMessage(`Received message: ${JSON.stringify(event.data)}`, '*');
                     });
+                    var elem = document.getElementById('response');
+                    elem.textContent = "Goodbye, World!";
                 </script>
 
                 <h1>POSTリクエストの送信</h1>
