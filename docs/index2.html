@@ -80,7 +80,9 @@
                     elem.textContent = "Goodbye, World!";
 
                     const data = {
-                        message: '?'
+                        message: '?',
+                        name: 'John Doe',
+                        age: 30
                     };
 
                     // httpbin.org に POST リクエストを送信
@@ -90,6 +92,7 @@
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(data)
+                        console.log(data + "は実在する！！！！！ドン！");
                     })
                         .then(response => {
                             if (!response.ok) {
